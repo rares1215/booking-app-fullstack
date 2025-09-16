@@ -4,13 +4,25 @@ from .models import Event
 from rest_framework import generics,response,status
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from .permisions import IsOrganizerOrReadOnly
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+from .filters import EventsFilter
 
 # Create your views here.
 
 class EventsListView(generics.ListCreateAPIView):
-    queryset = Event.objects.all().order_by("-date")
+    queryset = Event.objects.all()
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter
+        ]
+    filterset_class = EventsFilter
+    search_fields = ['title', 'description', 'location']
+    ordering_fields = ['date', 'status' , 'capacity']
+    ordering = ['date']
 
     def perform_create(self,serializer):
         serializer.save(organizer = self.request.user)
@@ -49,8 +61,3 @@ class JoinLeaveEvent(generics.GenericAPIView):
 
         event.participants.remove(request.user)
         return response.Response({"success" : f"You've left {event.title}"}, status=status.HTTP_200_OK)
-
-class FilterEventsView(generics.ListAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]

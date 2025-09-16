@@ -3,6 +3,15 @@ from .models import Event
 from django.utils import timezone
 
 class EventSerializer(serializers.ModelSerializer):
+    organizer = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field="username"
+    )
+    participants = serializers.SlugRelatedField(
+        slug_field="username",
+        many=True,
+        read_only=True
+    )
     class Meta:
         model = Event
         fields = [

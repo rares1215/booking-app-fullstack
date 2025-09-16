@@ -35,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost").split(",")
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
 }
 
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'events',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
