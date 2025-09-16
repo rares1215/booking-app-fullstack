@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from .models import Event
+from .models import Event,Comment
 from django.utils import timezone
 
+
+#### Serializer for events #########
 class EventSerializer(serializers.ModelSerializer):
     organizer = serializers.SlugRelatedField(
         read_only=True,
@@ -52,3 +54,27 @@ class EventSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"date" : "The date can't be in the past!"})
 
         return attrs
+
+
+#### Serializer on Comments####
+
+class CommentSerializer(serializers.ModelSerializer):
+    event = serializers.SlugRelatedField(
+        slug_field="title",
+        read_only=True
+    )
+    user = serializers.SlugRelatedField(
+        slug_field="username",
+        read_only=True
+    )
+    class Meta:
+        model = Comment
+        fields = [
+            'id',
+            'event',
+            'user',
+            'title',
+            'content',
+            'created_at',
+        ]
+        extra_kwargs = {"created_at":{"read_only":True}}
