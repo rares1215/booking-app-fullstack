@@ -16,6 +16,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             "bio",
             "role",
             "birthday",
+            "first_name",
+            "last_name",
             ]
         extra_kwargs = {"user":{"read_only":True}}
 
@@ -38,7 +40,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)
     class Meta:
         model = User
-        fields = ["id","email","username","password","password2"]
+        fields = ["id","email", "first_name" , 'last_name',"username","password","password2"]
         extra_kwargs = {"password": {"write_only":True}}
 
     def validate(self,attrs):

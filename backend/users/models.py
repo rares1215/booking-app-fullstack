@@ -14,6 +14,8 @@ class Profile(models.Model):
     bio = models.TextField(blank=True, null=True)
     role = models.CharField(max_length=15, choices=ROLE_CHOICES, blank=True, null=True)
     birthday = models.DateField(blank=True,null=True)
+    first_name = models.CharField(max_length = 150, blank = True)
+    last_name = models.CharField(max_length = 150, blank = True)
 
 
     def __str__(self):

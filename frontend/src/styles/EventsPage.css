@@ -1,0 +1,52 @@
+.events-page {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.events-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* spațiu între carduri */
+  max-width: 800px;
+  margin: 0 auto; /* centru pe pagină */
+}
+
+.event-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-title {
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.event-description {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.event-status.active {
+  color: green;
+  font-weight: bold;
+}
+
+.event-status.finished {
+  color: red;
+  font-weight: bold;
+}

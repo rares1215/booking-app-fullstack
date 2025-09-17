@@ -8,7 +8,7 @@ from .models import Profile
 # Create your views here.
 
 class RegisterUserView(generics.CreateAPIView):
-    queryset = User
+    queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 

@@ -22,7 +22,7 @@ class EventsListView(generics.ListCreateAPIView):
     filterset_class = EventsFilter
     search_fields = ['title', 'description', 'location']
     ordering_fields = ['date', 'status' , 'capacity']
-    ordering = ['date']
+    ordering = ['status']
 
     def perform_create(self,serializer):
         serializer.save(organizer = self.request.user)
