@@ -106,11 +106,11 @@
 }
 
 .btn-secondary {
-  background: #fff;
+  background: rgb(185, 2, 185);
   color: #667eea;
   border: 2px solid #fff;
 }
 
 .btn-secondary:hover {
-  background: #f0f0f0;
+  background: rgb(224, 107, 224);
 }

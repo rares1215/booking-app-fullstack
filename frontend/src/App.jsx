@@ -12,6 +12,7 @@ import EditProfile from './pages/EditProfile';
 import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import MyEvents from './pages/MyEvents';
+import DashBord from './pages/Dashbord';
 
 
 function Logout() {
@@ -75,6 +76,13 @@ function App() {
           }
           />
         
+        <Route path='/events-dashbord/' element = {
+          <ProtectedRoute>
+              <DashBord />
+          </ProtectedRoute>
+          }
+          />
+
         <Route path='/' element = {<Home />} />
         <Route path='/login/' element = {<Login/>} />
         <Route path='/register/' element = {<RegisterAndLogout />} />

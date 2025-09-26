@@ -1,79 +1,92 @@
-/* Container pentru centru */
 .profile-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.profile-header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  /* background: linear-gradient(135deg, #74ebd5, #acb6e5); */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 10rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-/* Card principal */
-.profile-card {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 40px 30px;
-  width: 400px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  text-align: center;
-  position: relative;
-}
-
-/* Avatar rotund */
 .profile-avatar img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
-  border: 4px solid #74ebd5;
+  border: 4px solid #667eea;
 }
 
-/* Nume mare si bold */
-.profile-name {
+.profile-info h1 {
   font-size: 1.8rem;
-  font-weight: 700;
   margin: 0;
+}
+
+.profile-info .role {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.profile-info .bio {
+  font-style: italic;
+  color: #555;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  flex: 1;
+  text-align: center;
+  background: #f7f8fc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 0.5rem;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
   color: #333;
 }
 
-/* Rol user */
-.profile-role {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+.stat-card p {
+  margin: 0;
+  color: #666;
 }
 
-/* Informatii profil */
-.profile-info p {
-  text-align: left;
-  margin: 10px 0;
-  font-size: 0.95rem;
-  color: #444;
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-/* Buton Edit */
-.edit-profile-btn {
-  margin-top: 25px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  background-color: #74ebd5;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
+.profile-actions .edit-btn,
+.profile-actions .create-btn {
+  background: #667eea;
   color: #fff;
-  transition: 0.3s all ease;
-  margin-right: 1rem;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.edit-profile-btn:hover {
-  background-color: #5ac1b8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.profile-actions .create-btn {
+  background: #48bb78;
 }
 
+.profile-actions button:hover {
+  opacity: 0.9;
+}
 
 
 /*//////////////////////////////////// Edit Profile css //////////// */

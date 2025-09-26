@@ -23,34 +23,37 @@ function Profile() {
     }
   }, [profile.user])
 
-  return (
+return (
     <div className="profile-page">
-      <div className="profile-card">
+      <div className="profile-header">
         <div className="profile-avatar">
-          <img
-            src={profile.avatar || "/default-avatar.png"}
-            alt="avatar"
-          />
+          <img src="/default-avatar.png" alt="User avatar" />
         </div>
-        <h1 className="profile-name">
-          {profile.first_name} {profile.last_name}
-        </h1>
-        <p className="profile-role"> role: {profile.role?.toUpperCase()}</p>
-
         <div className="profile-info">
-          <p><strong>Bio:</strong> {profile.bio || "No bio yet."}</p>
-          <p><strong>Birthday:</strong> {profile.birthday || "Not set"}</p>
-          <p><strong>Username:</strong> {profile.user}</p>
-          <p><strong>Events Created:</strong>{events.length}</p>
+          <h1>{profile.first_name} {profile.last_name}</h1>
+          <p className="role">{profile.role}</p>
+          <p className="bio">{profile.bio}</p>
         </div>
+      </div>
 
-        <button
-          className="edit-profile-btn"
-          onClick={() => navigate("/edit-profile/")}
-        >
-          Edit Profile
-        </button>
-        {profile.role==="organizer"?<button className="edit-profile-btn" onClick={() => navigate("/create-event/")}>Create Event</button>:""}
+      <div className="profile-stats">
+        <div className="stat-card">
+          <h3>{events.length}</h3>
+          <p>Events Created</p>
+        </div>
+        <div className="stat-card">
+          <h3>120</h3>
+          <p>Total Participants</p>
+        </div>
+        <div className="stat-card">
+          <h3>{events.length}</h3>
+          <p>Upcoming Events</p>
+        </div>
+      </div>
+
+      <div className="profile-actions">
+        <button onClick={() => navigate("/edit-profile/")} className="edit-btn">Edit Profile</button>
+        {profile.role==="organizer"?<button onClick={() =>navigate("/events-dashbord/")} className="create-btn">DashBord</button>:""}
       </div>
     </div>
   );
