@@ -1,5 +1,7 @@
-function Event({ event }) {
+function Event({ event, onDelete, onEdit, currentUser }) {
   const date = new Date(event.date).toLocaleString("en-US");
+
+  const isOrganizer = currentUser?.user === event.organizer;
 
   return (
     <div className="event-card">
@@ -15,6 +17,13 @@ function Event({ event }) {
       <p className={`event-status ${event.status}`}>
         {event.status === "active" ? "🟢 Active" : "🔴 Finished"}
       </p>
+
+      {isOrganizer && (
+        <div className="event-buttons">
+          <button className="edit-btn" onClick={() => onEdit(event.id)}>Edit</button>
+          <button className="delete-btn" onClick={() => onDelete(event.id)}>Delete</button>
+        </div>
+      )}
     </div>
   );
 }

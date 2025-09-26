@@ -52,7 +52,7 @@ function App() {
           </ProtectedRoute>
           }
           />
-        <Route path='/edit-profile/' element = {
+        <Route path='/create-event/' element = {
           <ProtectedRoute>
               <CreateEvent />
           </ProtectedRoute>

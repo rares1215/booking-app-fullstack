@@ -1,0 +1,76 @@
+.create-event-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.create-event-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 600px;
+}
+
+.create-event-card h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.create-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.create-event-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.create-event-form input,
+.create-event-form textarea,
+.create-event-form select {
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  transition: border 0.2s ease;
+}
+
+.create-event-form input:focus,
+.create-event-form textarea:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+.create-event-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #1e40af;
+}
