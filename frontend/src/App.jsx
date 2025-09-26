@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
+import MyEvents from './pages/MyEvents';
 
 
 function Logout() {
@@ -63,6 +64,13 @@ function App() {
         <Route path='/edit-event/:id/' element = {
           <ProtectedRoute>
               <EditEvent />
+          </ProtectedRoute>
+          }
+          />
+
+        <Route path='/my-events/' element = {
+          <ProtectedRoute>
+              <MyEvents />
           </ProtectedRoute>
           }
           />
