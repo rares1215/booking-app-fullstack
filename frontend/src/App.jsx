@@ -10,6 +10,7 @@ import { Navigate } from 'react-router-dom';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import CreateEvent from './pages/CreateEvent';
+import EditEvent from './pages/EditEvent';
 
 
 function Logout() {
@@ -59,6 +60,13 @@ function App() {
           }
           />
 
+        <Route path='/edit-event/:id/' element = {
+          <ProtectedRoute>
+              <EditEvent />
+          </ProtectedRoute>
+          }
+          />
+        
         <Route path='/' element = {<Home />} />
         <Route path='/login/' element = {<Login/>} />
         <Route path='/register/' element = {<RegisterAndLogout />} />

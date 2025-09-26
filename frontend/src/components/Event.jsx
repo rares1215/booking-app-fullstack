@@ -12,7 +12,7 @@ function Event({ event, onDelete, onEdit, currentUser }) {
       <p>👥 Capacity: {event.capacity}</p>
       <p>✅ Participants: {event.participants.length}</p>
       <p>
-        <small>Organizer: {event.organizer}</small>
+        <small>Organizer: {isOrganizer?"You":event.organizer}</small>
       </p>
       <p className={`event-status ${event.status}`}>
         {event.status === "active" ? "🟢 Active" : "🔴 Finished"}

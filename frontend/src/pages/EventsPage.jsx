@@ -2,12 +2,13 @@ import { useEffect, useState } from "react"
 import api from "../api";
 import Event from "../components/Event"
 import "../styles/EventsPage.css"
-
+import { useNavigate } from "react-router-dom";
 
 function EventsPage() {
     
     const [events, setEvents] = useState([]);
-    const [profile,setProfile] = useState(null)
+    const [profile,setProfile] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() =>{
         getEvents();
@@ -36,6 +37,10 @@ function EventsPage() {
       }).catch((err) => alert(err.response.data));
     }
 
+    const handleEdit = (id) =>{
+      navigate(`/edit-event/${id}/`);
+    }
+
 
   return (
     <div className="events-page">
@@ -46,6 +51,7 @@ function EventsPage() {
           event={event} 
           onDelete={handleDelete} 
           currentUser={profile} 
+          onEdit={handleEdit}
           key={event.id} />)
         ) : (
           <p>No events available.</p>
