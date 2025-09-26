@@ -3,17 +3,19 @@ import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import { useNavigate } from "react-router-dom";
 import "../styles/Auth.css"
-
+import LoadingSpinner from "../components/LoadingSpinner";
 function Login()
 {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
 
 
     const submitLogin = (e) =>{
+        setIsLoading(true);
         e.preventDefault();
         api.post("auth/token/", {username,password})
         .then((res) =>{
@@ -21,14 +23,14 @@ function Login()
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
                 navigate("/events/");
+                setIsLoading(false);
             }
         }).catch((err) =>{
+            setIsLoading(false);
             if(err.response && err.response.data) setErrors(err.response.data);
             else alert("Something went wrong!");
         });
     }
-
-
 
 return (
     <div className="login-container">
@@ -66,6 +68,7 @@ return (
             </form>
         <div className="form-footer">
             <p>Don’t have an account? <a href="/register">Register</a></p>
+            {isLoading?<LoadingSpinner/>:""}
         </div>
         </div>
     </div>

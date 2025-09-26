@@ -3,7 +3,7 @@ import {Navigate} from "react-router-dom";
 import { ACCESS_TOKEN,REFRESH_TOKEN } from "../constants"
 import {jwtDecode} from "jwt-decode"
 import api from "../api"
-
+import LoadingSpinner from "./LoadingSpinner";
 
 
 function ProtectedRoute({children}) {
@@ -45,7 +45,7 @@ function ProtectedRoute({children}) {
     }
 
 
-    if(isAuth===null) return <div>Is Loading...</div>
+    if(isAuth===null) return <LoadingSpinner />
 
     return isAuth?children:<Navigate to="/login/" />
 }

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [profile, setProfile] = useState({});
+  const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,6 +13,15 @@ function Profile() {
       .then((res) => setProfile(res.data))
       .catch((err) => alert(err));
   }, []);
+
+  useEffect(() =>{
+    if(profile.user){
+      api.get(`events/?organizer=${profile.user}`)
+      .then((res) =>{
+        setEvents(res.data);
+      }).catch((err) => alert(err.response.data));
+    }
+  }, [profile.user])
 
   return (
     <div className="profile-page">
@@ -31,6 +41,7 @@ function Profile() {
           <p><strong>Bio:</strong> {profile.bio || "No bio yet."}</p>
           <p><strong>Birthday:</strong> {profile.birthday || "Not set"}</p>
           <p><strong>Username:</strong> {profile.user}</p>
+          <p><strong>Events Created:</strong>{events.length}</p>
         </div>
 
         <button
