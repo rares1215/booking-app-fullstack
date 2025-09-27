@@ -20,3 +20,11 @@ class UpdateProfileView(generics.RetrieveUpdateAPIView):
         user = self.request.user
         return Profile.objects.get(user=user)
 
+class PublicProfile(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field = "user__username"
+
+    def get_object(self):
+        username = self.kwargs["username"]
+        return Profile.objects.get(user__username=username)

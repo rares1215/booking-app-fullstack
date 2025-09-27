@@ -95,3 +95,19 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.profile-organizer{
+  color:#007bff;
+}
+
+
+.profile-link{
+  color: blueviolet;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.profile-link:hover{
+  color: rgb(159, 78, 235);
+}

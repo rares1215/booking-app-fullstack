@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+
+import ModalParticipants from "./ModalParticipants";
+
 function Event({ event, onDelete, onEdit, currentUser, onJoin, onLeave }) {
   const date = new Date(event.date).toLocaleString("en-US");
 
@@ -12,7 +16,7 @@ function Event({ event, onDelete, onEdit, currentUser, onJoin, onLeave }) {
       <p>📅 {date}</p>
       <p>👥 Capacity: {event.capacity}</p>
       <p>✅ Participants: {event.participants.length}</p>
-      <p><small>Organizer: {isOrganizer?"You":event.organizer}</small></p>
+      <p className="profile-organizer"><small>Organizer: {isOrganizer?<Link to={"/profile/"} className="profile-link">You</Link>:<Link className="profile-link" to={`/profile/${event.organizer}`}>{event.organizer}</Link>}</small></p>
 
       <div className="event-buttons">
         {!isOrganizer && (
@@ -27,6 +31,7 @@ function Event({ event, onDelete, onEdit, currentUser, onJoin, onLeave }) {
           <>
             <button className="btn edit-btn" onClick={() => onEdit(event.id)}>✏️ Edit</button>
             <button className="btn delete-btn" onClick={() => onDelete(event.id)}>🗑️ Delete</button>
+            <ModalParticipants event={event} />
           </>
         )}
       </div>

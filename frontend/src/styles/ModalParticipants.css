@@ -1,0 +1,90 @@
+.modal-wrapper {
+  display: inline-block; /* ca să stea frumos lângă butoanele Edit/Delete */
+}
+
+/* overlay-ul full screen */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* peste carduri */
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.modal-content li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.participants-btn {
+  padding: 0.5rem 1.2rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  background-color: #667eea;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.participants-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+  margin-top: 1rem;
+  background: #e53e3e;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  opacity: 0.9;
+}
+
+.participant-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.participant-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
