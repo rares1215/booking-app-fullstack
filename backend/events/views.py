@@ -26,6 +26,11 @@ class EventsListView(generics.ListCreateAPIView):
 
     def perform_create(self,serializer):
         serializer.save(organizer = self.request.user)
+    def get_queryset(self):
+        events = Event.objects.all()
+        for event in events.filter(status="active"):
+            event.update_status_if_finished()
+        return events
 
 class EditDeleteEventsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
@@ -40,7 +45,6 @@ class JoinLeaveEvent(generics.GenericAPIView):
 
     def post(self,request,pk):
         event = self.get_object()
-        event.update_status_if_finished()
 
         if event.status == "finished":
             return response.Response({"error" : "You can't join a finished event!"}, status=status.HTTP_400_BAD_REQUEST)

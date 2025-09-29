@@ -17,13 +17,14 @@ function Event({ event, onDelete, onEdit, currentUser, onJoin, onLeave }) {
       <p>👥 Capacity: {event.capacity}</p>
       <p>✅ Participants: {event.participants.length}</p>
       <p className="profile-organizer"><small>Organizer: {isOrganizer?<Link to={"/profile/"} className="profile-link">You</Link>:<Link className="profile-link" to={`/profile/${event.organizer}`}>{event.organizer}</Link>}</small></p>
+      <p>Status: {event.status==="active"?"🟢":"🔴"}</p>
 
       <div className="event-buttons">
         {!isOrganizer && (
           hasJoined ? (
-            <button className="btn leave-btn" onClick={() => onLeave(event.id)}>🚪 Leave</button>
+            event.status==="active"?<button className="btn leave-btn" onClick={() => onLeave(event.id)}>🚪 Leave</button>:"The event is finished!"
           ) : (
-            <button className="btn join-btn" onClick={() => onJoin(event.id)}>✅ Join</button>
+            event.status==="active"?<button className="btn join-btn" onClick={() => onJoin(event.id)}>✅ Join</button>:"The event is finished!"
           )
         )}
 
