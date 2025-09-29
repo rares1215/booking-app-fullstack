@@ -25,6 +25,7 @@ function Navbar() {
         <div className="nav-links">
           <Link to="/events/">Events</Link>
           <Link to="/profile/">Profile</Link>
+          <Link to="/events-dashbord/">Dashbord</Link>
           {/* Auth buttons */}
 
           {auth?

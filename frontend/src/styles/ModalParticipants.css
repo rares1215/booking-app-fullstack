@@ -70,6 +70,7 @@
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
+  margin-right: 2rem;
   cursor: pointer;
 }
 
@@ -87,4 +88,125 @@
 .participant-link:hover {
   color: #0056b3;
   text-decoration: underline;
+}
+
+
+/* ///////////////////////// Deletion Modal */
+
+.delete-btn {
+  padding: 0.5rem 1.2rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.delete-btn {
+  background: #dc3545; /* roșu */
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* Fundal semitransparent care acoperă ecranul */
+.delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Cutia modalului */
+.delete-modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Titlu */
+.delete-modal h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #e63946; /* roșu pentru pericol */
+}
+
+/* Text */
+.delete-modal p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Butoane */
+.delete-btn-action {
+  margin: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Confirm (delete) */
+.delete-btn-action.confirm {
+  background: #e63946;
+  color: #fff;
+}
+
+.delete-btn-action.confirm:hover {
+  background: #d62839;
+  transform: scale(1.05);
+}
+
+/* Close (cancel) */
+.delete-btn-action.cancel {
+  background: #ddd;
+  color: #333;
+}
+
+.delete-btn-action.cancel:hover {
+  background: #bbb;
+  transform: scale(1.05);
+}
+
+/* Animații */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

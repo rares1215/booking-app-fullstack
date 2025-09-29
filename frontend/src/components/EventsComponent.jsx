@@ -10,10 +10,11 @@ function EventsComponent({filterType=null, filterName=null, pageTitle="Upcoming 
     const [events, setEvents] = useState([]);
     const [profile,setProfile] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     useEffect(() =>{
-        setIsLoading(true); // pornim spinner-ul la fiecare fetch
+        setIsLoading(true);
         Promise.all([getEvents(), getProfile()])
           .finally(() => setIsLoading(false));
     },[filterType,filterName]);
@@ -49,7 +50,9 @@ function EventsComponent({filterType=null, filterName=null, pageTitle="Upcoming 
       api.post(`/events/${id}/join/`)
       .then((res) =>{
         if(res.status===200) getEvents();
-      }).catch((err) => alert(err.response.data.detail));
+      }).catch((err) => {
+        if(err.response && err.response.data) setErrors(err.response.data);
+      });
     }
 
     const onLeave = (id) =>{
@@ -59,13 +62,19 @@ function EventsComponent({filterType=null, filterName=null, pageTitle="Upcoming 
       }).catch((err) => alert(err.response.data.detail));
     }
 
-    // ✅ corect
     if (isLoading) return <LoadingSpinner />;
 
     return (
       <div className="events-page">
         <h1>{pageTitle}</h1>
         <div className="events-grid">
+        {Object.keys(errors).length > 0 && (
+          <div className="error-container">
+            {Object.entries(errors).map(([key, value]) => (
+              <p key={key} className="error-msg">{value}</p>
+            ))}
+          </div>
+            )}
           {events.length > 0 ? (
             events.map((event) => <Event 
               event={event} 

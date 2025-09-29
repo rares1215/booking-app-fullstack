@@ -2,13 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileStats({profile,events,isPublic=false})
 {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-
-    
-    const filterEventsByStatus = (event) =>{
-    return event.status==="active";
-  }
 
     const getAllParticipants = (events) =>{
         let allParticipants = 0;
@@ -17,6 +12,7 @@ function ProfileStats({profile,events,isPublic=false})
         });
         return allParticipants
   }
+
     return (
         <div className="profile-page">
         <div className="profile-header">
@@ -32,15 +28,15 @@ function ProfileStats({profile,events,isPublic=false})
 
         <div className="profile-stats">
             <div className="stat-card">
-            <h3>{events.length}</h3>
-            <p>Events Created</p>
+            <h3>{events.filter(e => e.status==="finished").length}</h3>
+            <p>Finished Events</p>
             </div>
             <div className="stat-card">
             <h3>{getAllParticipants(events)}</h3>
             <p>Total Participants</p>
             </div>
             <div className="stat-card">
-            <h3>{events.filter(filterEventsByStatus).length}</h3>
+            <h3>{events.filter(e => e.status==="active").length}</h3>
             <p>Upcoming Events</p>
             </div>
         </div>
